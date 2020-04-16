@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Messages</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Messages</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+
+    <!-- Show the bootom of the list each time -->
+    <ion-list>
+      <ion-item *ngFor="let mess of messagesArray">
+        <ion-avatar slot="start">
+          <img src="{{ getUserPicture(mess.userId) }}">
+        </ion-avatar>
+        <ion-label>
+          {{mess.message}}
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+  </div>
+
+</ion-content>
+
+<ion-footer *ngIf="isConnected()">
+  <ion-toolbar>
+    <ion-item>
+
+      <ion-input placeholder="Your Message..." [(ngModel)]="myMessage"> </ion-input>
+      <ion-button size="medium" (click)="handleClick()">Send</ion-button>
+
+    </ion-item>
+
+  </ion-toolbar>
+</ion-footer>
